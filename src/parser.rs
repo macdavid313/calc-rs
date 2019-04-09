@@ -132,3 +132,23 @@ pub fn eval(program: String) -> Result<i64, String> {
         Err(e) => Err(e),
     }
 }
+
+#[cfg(test)]
+mod test {
+    use crate::parser::eval;
+
+    #[test]
+    fn test_eval() {
+        assert_eq!(eval(String::from("1 + 1 + 2")).unwrap(), 1 + 1 + 2);
+        assert_eq!(eval(String::from("1 * 1 * 2")).unwrap(), 1 * 1 * 2);
+        assert_eq!(eval(String::from("1 / 1 + 2")).unwrap(), 1 / 1 + 2);
+        assert_eq!(
+            eval(String::from("1 + 1 -3 * 6 -2")).unwrap(),
+            1 + 1 - 3 * 6 - 2
+        );
+        assert_eq!(
+            eval(String::from("1*2*3*4*5*6/1/2/3/4/5/6")).unwrap(),
+            1 * 2 * 3 * 4 * 5 * 6 / 1 / 2 / 3 / 4 / 5 / 6
+        );
+    }
+}

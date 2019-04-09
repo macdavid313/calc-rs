@@ -38,16 +38,7 @@ pub fn lex(program: String) -> Vec<Token> {
         } else {
             match c {
                 '+' => tokens.push(Token::Plus),
-                '-' => {
-                    if let Some(&next_token) = chars.peek() {
-                        if next_token.is_ascii_digit() {
-                            let n = lex_numeral(&mut chars, &mut vec![]);
-                            tokens.push(Token::Numeral(0 - n));
-                        } else {
-                            tokens.push(Token::Minus);
-                        }
-                    }
-                }
+                '-' => tokens.push(Token::Minus),
                 '*' => tokens.push(Token::Mul),
                 '/' => tokens.push(Token::Div),
                 '(' => tokens.push(Token::Lparen),
