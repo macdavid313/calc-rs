@@ -5,5 +5,5 @@ authors = ["David Gu <macdavid313@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-rustyline = "*"
+rustyline = "5.0.1"
 dirs = "*"
