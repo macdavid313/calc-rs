@@ -4,7 +4,6 @@ mod parser;
 use crate::parser::eval;
 use rustyline::error::ReadlineError;
 use rustyline::Editor;
-use std::error::Error;
 
 fn main() {
     let info = "calc-rs, version 0.1";
@@ -33,11 +32,11 @@ fn main() {
                         Err(e) => println!("{}", e),
                     }
                 }
-            },
+            }
             Err(ReadlineError::Interrupted) => continue,
             Err(ReadlineError::Eof) => break,
             Err(err) => {
-                println!("Error: {}", err.description());
+                println!("Error: {}", err.to_string());
                 break;
             }
         }

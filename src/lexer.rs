@@ -1,4 +1,3 @@
-use std::error::Error;
 use std::iter::Peekable;
 use std::str::Chars;
 
@@ -26,7 +25,7 @@ pub fn lex(program: String) -> Vec<Token> {
         let s: String = accum.iter().collect();
         match s.parse::<i64>() {
             Ok(n) => n,
-            Err(e) => panic!("{}: {}", s, e.description()),
+            Err(e) => panic!("{}: {}", s, e.to_string()),
         }
     }
 
